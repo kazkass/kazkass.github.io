@@ -1,363 +1,385 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Découvrez nos massages bien-être et offrez-vous un moment de détente.">
-  <title>Harmonie Massage | Bien-être & détente</title>
-  <style>
-    :root {
-      --green: #294638;
-      --green-light: #496b55;
-      --cream: #f8f5ee;
-      --sand: #e8dfd0;
-      --ink: #26342e;
-      --muted: #69736c;
-      --white: #fffdf8;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Laura Destination Detente : massages bien-être à domicile à Toulouse et autour de Saint-Agne.">
+<title>Laura Destination Detente | Massage à domicile</title>
+<link rel="stylesheet" href="style.css">
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--ink);
-      background: var(--cream);
-      line-height: 1.65;
-    }
-    a { color: inherit; }
-    .container { width: min(1120px, 90%); margin: auto; }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(248, 245, 238, .96);
-      border-bottom: 1px solid #e7e0d4;
-      backdrop-filter: blur(10px);
-    }
-    .nav {
-      min-height: 76px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-    }
-    .brand {
-      color: var(--green);
-      font-family: Georgia, serif;
-      font-size: 1.55rem;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    .brand span {
-      display: block;
-      color: var(--muted);
-      font-family: Arial, sans-serif;
-      font-size: .62rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-    nav { display: flex; align-items: center; gap: 24px; }
-    nav a { font-size: .92rem; text-decoration: none; }
-    nav a:hover { color: var(--green-light); }
-    .nav-cta, .button {
-      display: inline-block;
-      border: 0;
-      border-radius: 999px;
-      background: var(--green);
-      color: white;
-      padding: 12px 21px;
-      text-decoration: none;
-      font-weight: bold;
-      cursor: pointer;
-      transition: transform .2s, background .2s;
-    }
-    .nav-cta:hover, .button:hover { background: var(--green-light); transform: translateY(-2px); }
-
-    .hero {
-      min-height: 570px;
-      display: flex;
-      align-items: center;
-      color: white;
-      background:
-        linear-gradient(90deg, rgba(23, 34, 25, .82), rgba(23, 34, 25, .28)),
-        url("https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=2000&q=85") center/cover;
-    }
-    .hero-content { max-width: 650px; padding: 90px 0; }
-    .eyebrow {
-      font-size: .78rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-    h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: normal; line-height: 1.2; }
-    h1 { font-size: clamp(2.7rem, 6vw, 4.8rem); margin-bottom: 22px; }
-    .hero p { max-width: 530px; font-size: 1.1rem; margin-bottom: 30px; color: #f6f2e9; }
-    .button.light { background: var(--white); color: var(--green); }
-
-    section { scroll-margin-top: 90px; }
-    .section { padding: 82px 0; }
-    .section-heading { text-align: center; max-width: 650px; margin: 0 auto 42px; }
-    .section-heading .eyebrow { color: var(--green-light); margin-bottom: 8px; }
-    h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 12px; }
-    .section-heading p, .muted { color: var(--muted); }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 20px;
-    }
-    .service-card {
-      overflow: hidden;
-      background: var(--white);
-      border: 1px solid #e8e0d4;
-      border-radius: 12px;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .service-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px #26342e12; }
-    .service-card img { display: block; width: 100%; height: 170px; object-fit: cover; }
-    .service-body { padding: 22px; }
-    .service-body h3 { font-size: 1.35rem; margin-bottom: 10px; }
-    .service-body p { color: var(--muted); font-size: .94rem; min-height: 76px; }
-    .price { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; color: var(--green); font-weight: bold; font-size: .9rem; }
-
-    .about {
-      background: #eee9de;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 55px;
-      align-items: center;
-    }
-    .about img { width: 100%; height: 390px; object-fit: cover; border-radius: 12px; }
-    .about .eyebrow { color: var(--green-light); margin-bottom: 10px; }
-    .about h2 { margin-bottom: 20px; }
-    .about p { color: #59645d; margin-bottom: 15px; }
-
-    .quote {
-      background: var(--white);
-      padding: 28px;
-      border-radius: 12px;
-      border: 1px solid #e8e0d4;
-    }
-    .quote p { font-family: Georgia, serif; font-size: 1.15rem; margin-bottom: 15px; }
-    .quote strong { color: var(--green); }
-    .testimonials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-
-    .booking { background: var(--green); color: white; text-align: center; padding: 70px 20px; }
-    .booking p { color: #e2e9e2; margin: 12px 0 25px; }
-    .booking .button { background: var(--white); color: var(--green); }
-
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-    .contact-info p { margin: 12px 0; color: var(--muted); }
-    form { display: grid; gap: 14px; }
-    input, textarea, select {
-      width: 100%;
-      padding: 13px 14px;
-      border: 1px solid #d9d5ca;
-      border-radius: 8px;
-      background: var(--white);
-      font: inherit;
-      color: var(--ink);
-    }
-    textarea { min-height: 120px; resize: vertical; }
-    .form-message { min-height: 24px; color: var(--green); font-weight: bold; }
-
-    footer { background: #1d3026; color: #f8f5ee; padding: 28px 0; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-    footer p { font-size: .9rem; color: #d2dbd3; }
-
-    @media (max-width: 900px) {
-      .services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      nav { gap: 12px; flex-wrap: wrap; justify-content: center; }
-      .nav { padding: 15px 0; flex-wrap: wrap; }
-      .about { gap: 30px; }
-    }
-    @media (max-width: 620px) {
-      .nav { justify-content: center; }
-      nav { width: 100%; }
-      nav a { font-size: .85rem; }
-      .nav-cta { padding: 9px 13px; }
-      .hero { min-height: 520px; }
-      .services, .testimonials, .about, .contact-grid { grid-template-columns: 1fr; }
-      .section { padding: 60px 0; }
-      .about img { height: 280px; }
-      .service-body p { min-height: 0; }
-    }
-  </style>
 </head>
+
 <body>
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#accueil">Harmonie Massage
-        <span>Détente · Équilibre · Bien-être</span>
-      </a>
-      <nav aria-label="Navigation principale">
-        <a href="#accueil">Accueil</a>
-        <a href="#prestations">Prestations</a>
-        <a href="#apropos">À propos</a>
-        <a href="#avis">Avis</a>
-        <a href="#contact">Contact</a>
-        <a class="nav-cta" href="#contact">Prendre rendez-vous</a>
-      </nav>
+
+<header>
+  <div class="container navbar">
+    <a href="#accueil" class="logo">
+      <img src="images/logo_ldd.png" alt="Logo Laura Destination Detente">
+      <strong>
+        Laura Destination Detente
+        <small>Le bien-être vient à vous</small>
+      </strong>
+    </a>
+
+    <nav aria-label="Navigation principale">
+      <a href="#accueil">Accueil</a>
+      <a href="#massages">Les massages</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#apropos">À propos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="accueil">
+  <div class="container hero-content">
+    <div class="surtitre">Massage bien-être à domicile · Toulouse</div>
+
+    <h1>Votre moment de détente, chez vous.</h1>
+
+    <p>
+      Offrez-vous une véritable parenthèse de bien-être sans quitter
+      votre domicile. Je me déplace à Toulouse et dans les environs
+      pour vous proposer un massage adapté à vos envies.
+    </p>
+
+    <div class="actions">
+      <a href="#massages" class="btn">Découvrir les massages →</a>
+      <a href="#contact" class="btn btn-transparent">Me contacter</a>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main>
-    <section class="hero" id="accueil">
-      <div class="container hero-content">
-        <p class="eyebrow">Votre bulle de bien-être</p>
-        <h1>Le massage, un voyage vers la détente</h1>
-        <p>Offrez à votre corps et à votre esprit une pause bien méritée. Découvrez des massages adaptés à vos envies, dans une atmosphère douce et apaisante.</p>
-        <a class="button light" href="#prestations">Découvrir les prestations&nbsp; →</a>
-      </div>
-    </section>
+<div class="avantages">
+  <div class="container avantages-inner">
+    <div>✦ Massages à domicile</div>
+    <div>✦ Plusieurs techniques au choix</div>
+    <div>✦ Déplacement offert autour de Saint-Agne*</div>
+  </div>
+</div>
 
-    <section class="section" id="prestations">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Prenez du temps pour vous</p>
-          <h2>Nos prestations</h2>
-          <p>Des soins personnalisés pour vous aider à ralentir et à vous ressourcer.</p>
-        </div>
+<section class="section" id="massages">
+  <div class="container">
 
-        <div class="services">
-          <article class="service-card">
-            <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=700&q=80" alt="Soin de massage relaxant">
-            <div class="service-body">
-              <h3>Massage relaxant</h3>
-              <p>Un moment de douceur pour relâcher les tensions et retrouver le calme.</p>
-              <div class="price"><span>60 minutes</span><span>70 €</span></div>
-            </div>
-          </article>
-          <article class="service-card">
-            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=700&q=80" alt="Massage du dos">
-            <div class="service-body">
-              <h3>Massage du dos</h3>
-              <p>Une attention ciblée sur le dos, la nuque et les épaules.</p>
-              <div class="price"><span>30 minutes</span><span>40 €</span></div>
-            </div>
-          </article>
-          <article class="service-card">
-            <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=700&q=80" alt="Ambiance spa et pierres chaudes">
-            <div class="service-body">
-              <h3>Pierres chaudes</h3>
-              <p>Une expérience enveloppante dans une ambiance chaleureuse.</p>
-              <div class="price"><span>75 minutes</span><span>90 €</span></div>
-            </div>
-          </article>
-          <article class="service-card">
-            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=700&q=80" alt="Moment de détente et de bien-être">
-            <div class="service-body">
-              <h3>Massage personnalisé</h3>
-              <p>Un soin adapté à vos préférences après un échange sur vos besoins.</p>
-              <div class="price"><span>60 minutes</span><span>75 €</span></div>
-            </div>
-          </article>
-        </div>
-        <p class="muted" style="text-align:center; margin-top:22px; font-size:.88rem;">Les prestations et tarifs ci-dessus sont des exemples à personnaliser.</p>
-      </div>
-    </section>
-
-    <section class="section about" id="apropos">
-      <div class="container" style="display:contents;">
-        <div><img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1000&q=85" alt="Espace de bien-être avec serviettes et ambiance apaisante"></div>
-        <div>
-          <p class="eyebrow">À propos</p>
-          <h2>Une parenthèse rien que pour vous</h2>
-          <p>Bienvenue dans un espace pensé pour la détente, l'écoute et le lâcher-prise. Chaque séance commence par un échange pour mieux comprendre vos attentes.</p>
-          <p>Mon objectif : vous accueillir dans un cadre chaleureux et vous proposer un moment de bien-être adapté à vos envies.</p>
-          <a class="button" href="#contact">Me contacter</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="avis">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Vos impressions</p>
-          <h2>Ils en parlent</h2>
-          <p>Exemples de témoignages à remplacer par les avis réels de vos clients.</p>
-        </div>
-        <div class="testimonials">
-          <article class="quote">
-            <p>« Un vrai moment de calme, dans un cadre très agréable. »</p>
-            <strong>— Sophie</strong>
-          </article>
-          <article class="quote">
-            <p>« Une belle expérience, avec une écoute attentive. »</p>
-            <strong>— Thomas</strong>
-          </article>
-          <article class="quote">
-            <p>« Je suis ressortie détendue et ravie de cette pause. »</p>
-            <strong>— Camille</strong>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="booking">
-      <h2>Prêt(e) à prendre du temps pour vous ?</h2>
-      <p>Contactez-moi pour choisir votre prestation et convenir d'un rendez-vous.</p>
-      <a class="button" href="#contact">Demander un rendez-vous&nbsp; →</a>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Restons en contact</p>
-          <h2>Contact & rendez-vous</h2>
-          <p>Une question ou envie de réserver ? Envoyez-moi un message.</p>
-        </div>
-        <div class="contact-grid">
-          <div class="contact-info">
-            <h3>Harmonie Massage</h3>
-            <p>📍 Votre adresse, votre ville</p>
-            <p>☎️ 06 00 00 00 00</p>
-            <p>✉️ contact@harmonie-massage.fr</p>
-            <p>🕒 Sur rendez-vous</p>
-            <p class="muted">Pensez à remplacer ces coordonnées par vos informations professionnelles.</p>
-          </div>
-          <form id="contactForm">
-            <input type="text" name="nom" placeholder="Votre nom" aria-label="Votre nom" required>
-            <input type="email" name="email" placeholder="Votre adresse e-mail" aria-label="Votre adresse e-mail" required>
-            <select name="prestation" aria-label="Prestation souhaitée">
-              <option value="">Prestation souhaitée (facultatif)</option>
-              <option>Massage relaxant</option>
-              <option>Massage du dos</option>
-              <option>Pierres chaudes</option>
-              <option>Massage personnalisé</option>
-            </select>
-            <textarea name="message" placeholder="Votre message" aria-label="Votre message" required></textarea>
-            <button class="button" type="submit">Préparer mon message</button>
-            <p class="form-message" id="formMessage" aria-live="polite"></p>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> Harmonie Massage — Tous droits réservés.</p>
-      <p>Site vitrine de démonstration · <a href="#accueil">Retour en haut ↑</a></p>
+    <div class="titre-section">
+      <div class="surtitre">Choisissez votre expérience</div>
+      <h2>Les massages proposés</h2>
+      <p>
+        Prenez le temps de vous recentrer et de profiter d'un moment
+        privilégié dans le confort de votre maison.
+      </p>
     </div>
-  </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    <div class="massages">
 
-    // Formulaire de démonstration : il ne transmet pas encore les messages.
-    document.getElementById("contactForm").addEventListener("submit", function (event) {
-      event.preventDefault();
-      const nom = this.elements.nom.value.trim();
-      const prestation = this.elements.prestation.value;
-      const message = document.getElementById("formMessage");
+      <article class="carte">
+        <img
+          src="images/image_suedois.png"
+          alt="Massage bien-être"
+          loading="lazy">
+        <div class="carte-contenu">
+          <div class="numero">01 · RELÂCHEMENT</div>
+          <h3>Massage suédois</h3>
+          <p>
+            Un massage aux mouvements dynamiques et enveloppants,
+            pour un moment consacré au relâchement et au bien-être corporel.
+          </p>
+        </div>
+      </article>
 
-      message.textContent = "Merci " + nom + " ! Le formulaire fonctionne, mais l'envoi réel doit encore être configuré.";
-      if (prestation) {
-        message.textContent += " Prestation choisie : " + prestation + ".";
-      }
-    });
-  </script>
+      <article class="carte">
+        <img
+          src="images/image_californien.png"
+          alt="Massage relaxant"
+          loading="lazy">
+        <div class="carte-contenu">
+          <div class="numero">02 · DOUCEUR</div>
+          <h3>Massage californien</h3>
+          <p>
+            Des mouvements longs, fluides et harmonieux pour s'offrir
+            une parenthèse de douceur et de relaxation.
+          </p>
+        </div>
+      </article>
+
+      <article class="carte">
+        <img
+          src="images/image_lomilomi.png"
+          alt="Ambiance apaisante pour un massage"
+          loading="lazy">
+        <div class="carte-contenu">
+          <div class="numero">03 · ÉVASION</div>
+          <h3>Massage Lomi Lomi</h3>
+          <p>
+            Un massage inspiré de la tradition hawaïenne, avec des
+            mouvements amples et continus évoquant une sensation d'évasion.
+          </p>
+        </div>
+      </article>
+
+      <article class="carte">
+        <img
+          src="images/image_personnalise.png"
+          alt="Espace de détente"
+          loading="lazy">
+        <div class="carte-contenu">
+          <div class="numero">04 · SUR MESURE</div>
+          <h3>Massage personnalisé</h3>
+          <p>
+            Une séance définie selon vos préférences et vos attentes,
+            une parenthèse de bien-être sur mesure.
+          </p>
+        </div>
+      </article>
+
+
+        <article class="carte">
+        <img
+            src="images/image_reflexologieplantaire.png"
+            alt="Moment de relaxation"
+            loading="lazy">
+
+        <div class="carte-contenu">
+            <div class="numero">05 · DÉTENTE</div>
+            <h3>Réflexologie plantaire</h3>
+
+            <p>
+            Un massage bien-être dynamisant et relaxant qui stimule les zones
+            réflexes des pieds pour harmoniser l'ensemble du corps.
+            </p>
+
+            <p style="margin-top:15px; color:#304b3b; font-weight:bold;">
+            Durée : 45 minutes
+            </p>
+        </div>
+        </article>
+
+
+      <article class="carte">
+        <img
+          src="images/image_massagedomicile.png"
+          alt="Ambiance chaleureuse de bien-être"
+          loading="lazy">
+        <div class="carte-contenu">
+          <div class="numero">VOTRE CONFORT</div>
+          <h3>À votre domicile</h3>
+          <p>
+            Profitez de votre moment de détente chez vous, dans un
+            environnement familier, sans avoir à vous déplacer.
+          </p>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="note">
+      Les massages proposés sont des prestations de bien-être et ne remplacent
+      pas un diagnostic ou un suivi médical.
+    </p>
+
+  </div>
+</section>
+
+<section class="section tarifs" id="tarifs">
+  <div class="container">
+
+    <div class="titre-section">
+      <h2>Les tarifs</h2>
+      <p>Choisissez la durée qui vous convient pour votre moment de détente.</p>
+    </div>
+
+    <div class="liste-tarifs">
+      <div class="ligne-tarif">
+        <span>Massage de 45 minutes</span>
+        <strong>45 €</strong>
+      </div>
+
+      <div class="ligne-tarif">
+        <span>Massage de 1 heure</span>
+        <strong>60 €</strong>
+      </div>
+
+      <div class="ligne-tarif">
+        <span>Massage de 1 h 30</span>
+        <strong>80 €</strong>
+      </div>
+
+      <div class="ligne-tarif">
+        <span>Massage de 2 heures</span>
+        <strong>100 €</strong>
+      </div>
+    </div>
+
+    <p class="note">
+      Pour choisir votre massage ou vérifier la durée adaptée à vos envies,
+      contactez-moi par téléphone ou par e-mail.
+    </p>
+
+  </div>
+</section>
+
+
+<section class="section" id="apropos">
+  <div class="container">
+
+    <div class="titre-section">
+      <div class="surtitre">Des attentions qui font plaisir</div>
+      <h2>Bien plus qu'un massage</h2>
+      <p>
+        Pour faire plaisir à vos proches ou partager un moment
+        de détente à plusieurs, Laura Destination Detente
+        vous accompagne dans vos projets bien-être.
+      </p>
+    </div>
+
+    <div class="massages">
+
+      <article class="carte">
+        <img
+          src="images/image_cadeau.png"
+          alt="Cadeau joliment emballé"
+          loading="lazy">
+
+        <div class="carte-contenu">
+          <div class="numero">UNE IDÉE CADEAU</div>
+          <h3>Les cartes cadeaux</h3>
+
+          <p>
+            Offrez un véritable moment de détente à la personne
+            de votre choix. Pour un anniversaire, une fête ou
+            simplement pour faire plaisir, la carte cadeau
+            est une attention pleine de douceur.
+          </p>
+
+          <p style="margin-top:20px">
+            <a class="btn"
+               href="mailto:contact@lauradestinationdetente.fr?subject=Demande%20de%20carte%20cadeau">
+              Demander une carte cadeau
+            </a>
+          </p>
+        </div>
+      </article>
+
+      <article class="carte">
+        <img
+          src="images/image_soiree.png"
+          alt="Moment de fête entre amis"
+          loading="lazy">
+
+        <div class="carte-contenu">
+          <div class="numero">UN MOMENT À PARTAGER</div>
+          <h3>EVG & EVJF</h3>
+
+          <p>
+            Préparez un enterrement de vie de jeune fille ou de
+            garçon placé sous le signe de la détente. Échangeons
+            ensemble pour imaginer une prestation adaptée à votre
+            groupe et à votre organisation.
+          </p>
+
+          <p style="margin-top:20px">
+            <a class="btn"
+               href="mailto:contact@lauradestinationdetente.fr?subject=Demande%20de%20renseignements%20EVG%20EVJF">
+              Organiser votre moment
+            </a>
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section contact" id="contact">
+  <div class="container">
+
+    <div class="titre-section">
+      <div class="surtitre">Une question ? Un rendez-vous ?</div>
+      <h2>Contactez-moi</h2>
+      <p>
+        Pour prendre rendez-vous, connaître mes disponibilités ou discuter
+        du massage qui vous conviendrait, contactez-moi directement.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="contact-card">
+        <h3>Mes coordonnées</h3>
+
+        <p>
+          <strong>📍 Secteur d'intervention</strong><br>
+          Toulouse et ses environs
+        </p>
+
+        <p>
+          <strong>☎ Téléphone</strong><br>
+          <a class="contact-link" href="tel:+33781804689">
+            07 81 80 46 89
+          </a>
+        </p>
+
+        <p>
+          <strong>✉ E-mail</strong><br>
+          <a class="contact-link"
+             href="mailto:contact@lauradestinationdetente.fr">
+            contact@lauradestinationdetente.fr
+          </a>
+        </p>
+
+        <div class="actions" style="margin-top:24px">
+          <a class="btn" href="tel:+33781804689">Appeler</a>
+          <a class="btn" href="mailto:contact@lauradestinationdetente.fr">
+            Envoyer un e-mail
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <h3>Je me déplace chez vous</h3>
+
+        <p>
+          Profitez de votre massage sans avoir à vous déplacer :
+          je me rends à votre domicile dans le secteur de Toulouse
+          et des communes voisines.
+        </p>
+
+        <div class="zone">
+          <strong>🚗 Déplacement offert</strong><br>
+          Dans un rayon d'environ 15 km autour de Ramonville Saint-Agne.
+        </div>
+
+        <p>
+          Au-delà de cette zone, contactez-moi pour vérifier les possibilités
+          et les éventuels frais de déplacement.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <p>
+      © <span id="annee"></span> Laura Destination Detente
+    </p>
+
+    <p>Massage bien-être à domicile · Toulouse</p>
+
+    <a href="#accueil">Retour en haut ↑</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById("annee").textContent =
+  new Date().getFullYear();
+</script>
+
 </body>
 </html>
